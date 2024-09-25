@@ -9,9 +9,6 @@ import {
   UserLoginType,
   UserRolesEnum,
 } from "../../constants";
-
-const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET || "";
-const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET || "";
 const userSchema = new Schema(
   {
     avatar: {
@@ -88,6 +85,7 @@ userSchema.methods.isPasswordCorrect = async function (password: string) {
 };
 
 userSchema.methods.generateAccessToken = function () {
+  const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET?.trim() || "";
   return jwt.sign(
     {
       _id: this._id,
@@ -95,17 +93,18 @@ userSchema.methods.generateAccessToken = function () {
       username: this.username,
       role: this.role,
     },
-    ACCESS_TOKEN_SECRET,
+    accessTokenSecret,
     { expiresIn: process.env.ACCESS_TOKEN_EXPIRY }
   );
 };
 
 userSchema.methods.generateRefreshToken = function () {
+  const refreshTokenSecret = process.env.REFRESH_TOKEN_SECRET?.trim() || "";
   return jwt.sign(
     {
       _id: this._id,
     },
-    REFRESH_TOKEN_SECRET,
+    refreshTokenSecret,
     { expiresIn: process.env.REFRESH_TOKEN_EXPIRY }
   );
 };
