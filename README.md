@@ -1,7 +1,5 @@
 # Chat Application
 
-<img src="https://camo.githubusercontent.com/d668acbf047004e41f1b003580965e2ed1bb450ad66c3a56bdd60c8352792f12/68747470733a2f2f692e70696e696d672e636f6d2f6f726967696e616c732f65332f31622f37352f65333162373532383735363739623634666365303039393232663966306464612e676966" alt="Real-Time Chat Application" style="width: 300px; height: 200px;">
-
 Welcome to our Real-Time Chat Application! This is a chat application built using React for the front end and Node.js for the back end. The application allows users to authenticate, send messages, and participate in chat rooms.
 
 ## Table of Contents
